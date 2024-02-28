@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 13:32:56 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:08:56 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	format_sorter(char c, va_list ap, int *count, const char **format)
 		ft_putchar_count(va_arg(ap, int), count);
 	else if (c == 's')
 		ft_putstr_count(va_arg(ap, char *), count);
+	else if (c == 'p')
+		ft_putmem_count(va_arg(ap, void *), count);
 	else if (c == 'd' || c == 'i')
 		ft_putnbr_count(va_arg(ap, int), count);
 	else if (c == 'u')
@@ -26,6 +28,8 @@ void	format_sorter(char c, va_list ap, int *count, const char **format)
 		ft_putnbr_base(va_arg(ap, unsigned int), "0123456789ABCDEF", count);
 	else if (c == 'x')
 		ft_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef", count);
+	else if (c == '%')
+		ft_putchar_count('%', count);
 	else
 		(*format)--;
 }

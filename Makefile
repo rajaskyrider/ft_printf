@@ -6,7 +6,7 @@
 #    By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 10:57:24 by rpandipe          #+#    #+#              #
-#    Updated: 2024/02/28 11:24:01 by rpandipe         ###   ########.fr        #
+#    Updated: 2024/02/28 15:59:01 by rpandipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC		= cc
 CFLAG		= -Wall -Werror -Wextra
 CPPFLAGS	= -I libft
 RM		= rm -rf
-SRCS		= ft_printf.c ft_printstr.c ft_printnbr.c
+SRCS		= ft_printf.c ft_printstr.c ft_printnbr.c ft_printmem.c
 OBJS		= $(SRCS:.c=.o)
 NAME		= libftprintf.a
 LIBC		= ar rcs

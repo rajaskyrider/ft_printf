@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:07:54 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 13:36:12 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:39:33 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_putbase(unsigned int size, char *base, unsigned long nbr, int *count)
 
 void	ft_putnbr_base(unsigned int nbr, char *base, int *count)
 {
-        unsigned long	n;
-        unsigned int		size;
+	unsigned long		n;
+	unsigned int		size;
 
 	n = (unsigned long)nbr;
 	size = 16;

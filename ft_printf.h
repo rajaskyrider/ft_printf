@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 13:33:56 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:46:36 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_putstr_count(char *str, int *count);
 void	ft_putnbr_count(int nbr, int *count);
 void	ft_putnbr_u_count(unsigned int nbr, int *count);
 void	ft_putnbr_base(unsigned int nbr, char *base, int *count);
+void	ft_putmem_count(void *ptr, int *count);
 
 #endif
