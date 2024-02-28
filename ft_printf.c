@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 15:08:56 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:34:23 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	ft_printf(const char *format, ...)
 			count += write(1, format, 1);
 		format++;
 	}
+	va_end(ap);
 	return (count);
 }

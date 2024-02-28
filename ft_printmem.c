@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:06:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 15:58:01 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:55:50 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 char	*ft_mtoa(char *ans, void *ptr, int size)
 {
 	unsigned long long int	address;
+	int						i;
 
 	ans[0] = '0';
 	ans[1] = 'x';
-	ans[size] = 0;
+	ans[size + 2] = 0;
+	i = size + 1;
 	address = (unsigned long long int)ptr;
 	while (address != 0)
 	{
-		ans[size] = "0123456789abcdef"[address % 16];
+		ans[i] = "0123456789abcdef"[address % 16];
 		address /= 16;
-		size--;
+		i--;
 	}
 	return (ans);
 }
@@ -37,6 +39,11 @@ void	ft_putmem_count(void *ptr, int *count)
 
 	address = (unsigned long long int)ptr;
 	size = 0;
+	if (address == 0)
+	{
+		ft_putstr_count("(nil)", count);
+		return ;
+	}
 	while (address != 0)
 	{
 		size++;
@@ -45,7 +52,7 @@ void	ft_putmem_count(void *ptr, int *count)
 	ans = (char *)malloc(sizeof(char) * (size + 3));
 	if (!ans)
 		return ;
-	ans = ft_mtoa(ans, ptr, size + 1);
+	ans = ft_mtoa(ans, ptr, size);
 	ft_putstr_count(ans, count);
 	free (ans);
 }
