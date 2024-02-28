@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_bonussorter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 20:06:09 by rpandipe         ###   ########.fr       */
+/*   Created: 2024/02/28 20:06:58 by rpandipe          #+#    #+#             */
+/*   Updated: 2024/02/28 20:13:05 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	format_sorter(char c, va_list ap, int *count, const char **format)
+void	b_format_sorter(char c, va_list ap, int *count, const char **format)
 {
 	if (c == 'c')
 		ft_putchar_count(va_arg(ap, int), count);
@@ -44,23 +44,4 @@ void	flag_sorter(char c, va_list ap, int *count, const char **format)
 		ft_precision(ap, count, format);
 	else
 		(*format)--;
-}
-
-int	ft_printf(const char *format, ...)
-{
-	va_list	ap;
-	int		count;
-
-	count = 0;
-	va_start(ap, format);
-	while (*format)
-	{
-		if (*format == '%')
-			format_sorter(*(++format), ap, &count, &format);
-		else
-			count += write(1, format, 1);
-		format++;
-	}
-	va_end(ap);
-	return (count);
 }
