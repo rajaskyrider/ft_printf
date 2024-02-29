@@ -6,42 +6,35 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 20:06:58 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 20:13:05 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:51:46 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	b_format_sorter(char c, va_list ap, int *count, const char **format)
+char	*b_format_sorter(char c, va_list ap, int width, const char **format)
 {
-	if (c == 'c')
-		ft_putchar_count(va_arg(ap, int), count);
-	else if (c == 's')
-		ft_putstr_count(va_arg(ap, char *), count);
-	else if (c == 'p')
-		ft_putmem_count(va_arg(ap, void *), count);
-	else if (c == 'd' || c == 'i')
-		ft_putnbr_count(va_arg(ap, int), count);
-	else if (c == 'u')
-		ft_putnbr_u_count(va_arg(ap, unsigned int), count);
-	else if (c == 'X')
-		ft_putnbr_base(va_arg(ap, unsigned int), "0123456789ABCDEF", count);
-	else if (c == 'x')
-		ft_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef", count);
-	else if (c == '%')
-		ft_putchar_count('%', count);
-	else
-		flag_sorter(c, ap, count, format);
-}
+	char	*ans;
 
-void	flag_sorter(char c, va_list ap, int *count, const char **format)
-{
-	if (c == '-')
-		ft_leftjust(ap, count, format);
-	else if (c == '0')
-		ft_zeropad(ap, count, format, 0);
-	else if (c == '.')
-		ft_precision(ap, count, format);
+	ans = NULL;
+	if (c == 'c')
+		ans = ft_putchar_str(va_arg(ap, int), width);
+	else if (c == 's')
+		ans = ft_putstr_str(va_arg(ap, char *), width);
+/*	else if (c == 'p')
+		ans = ft_putmem_str(va_arg(ap, void *), width);
+	else if (c == 'd' || c == 'i')
+		ans = ft_putnbr_str(va_arg(ap, int), width);
+	else if (c == 'u')
+		ans = ft_putnbr_u_str(va_arg(ap, unsigned int), width);
+	else if (c == 'X')
+		ans = ft_putnbr_str(va_arg(ap, unsigned int), "0123456789ABCDEF", width);
+	else if (c == 'x')
+		ans = ft_putnbr_str(va_arg(ap, unsigned int), "0123456789abcdef", width);
+	else if (c == '%')
+		ans = ft_putchar_str('%', width);
 	else
-		(*format)--;
+		flag_sorter(c, ap, format);
+*/
+	return (ans);
 }

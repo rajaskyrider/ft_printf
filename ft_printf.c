@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 20:06:09 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:07:57 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,23 @@ void	format_sorter(char c, va_list ap, int *count, const char **format)
 	else if (c == '%')
 		ft_putchar_count('%', count);
 	else
-		flag_sorter(c, ap, count, format);
+		*count += flag_sorter(c, ap, format);
 }
 
-void	flag_sorter(char c, va_list ap, int *count, const char **format)
+int	flag_sorter(char c, va_list ap, const char **format)
 {
+	int	tempcount;
+	
+	tempcount = 0;
 	if (c == '-')
-		ft_leftjust(ap, count, format);
-	else if (c == '0')
-		ft_zeropad(ap, count, format, 0);
+		ft_leftjust(ap, &tempcount, format);
+	/*else if (c == '0')
+		ft_zeropad(ap, &tempcount, format, 0);
 	else if (c == '.')
-		ft_precision(ap, count, format);
+		ft_precision(ap, &tempcount, format);
 	else
-		(*format)--;
+		(*format)--;*/
+	return (tempcount);
 }
 
 int	ft_printf(const char *format, ...)
