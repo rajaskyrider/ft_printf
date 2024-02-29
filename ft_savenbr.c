@@ -1,0 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_savenbr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 15:23:40 by rpandipe          #+#    #+#             */
+/*   Updated: 2024/02/29 17:40:34 by rpandipe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+char	*ft_putnbr_str(int nbr, int width)
+{
+	char	*ans;
+	char	*str;
+
+	if (width == 0)
+		width = int_count(nbr);
+	ans = (char *)malloc(sizeof(char) * (width + 1));
+	if (!ans)
+		return (NULL);
+	str = ft_itoa(nbr);
+	ft_strlcpy(ans, str, width + 1);
+	free(str);
+	return (ans);
+}
+
+char	*ft_putnbr_u_str(unsigned int nbr, int width)
+{
+	char	*ans;
+
+	if (width == 0)
+		width = int_count(nbr);
+	ans = (char *)malloc(sizeof(char) * (width + 1));
+	if (!ans)
+		return (NULL);
+	str = ft_itoa(nbr);
+	ft_strlcpy(ans, str, width + 1);
+	free(str);
+	return (ans);
+}
+
+static void	base_count(unsigned long nbr, int *width)
+{
+	if (nbr >= 16)
+	{
+		ft_putbase(size, base, nbr / size, count);
+	}
+	*width++;
+}
+
+void	ft_savebase(unsigned int size, char *base, unsigned long nbr, char *ans)
+{
+	int	i;
+
+	i = 0;
+	while (nbr >= size)
+	{
+		ans[i++] = base[nbr % size];
+		nbr /= size;
+	}
+	ans[i++] = base[nbr % size];
+	ans[i] = 0;
+}
+
+char	*ft_putbase_str(unsigned int nbr, char *base, int width)
+{
+	char	*ans;
+	unsigned long		n;
+	unsigned int		size;
+
+	n = (unsigned long)nbr;
+	if (width == 0)
+		base_count(n, &width);
+	ans = (char *)malloc(sizeof(char) * (width + 1));
+	if (!ans)
+		return (NULL);
+	size = 16;
+	ft_savebase(size, base, n, ans);
+}

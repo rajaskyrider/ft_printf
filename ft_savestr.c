@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:20:32 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/29 09:45:57 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:22:02 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_putchar_str(char c, int width)
 		return (NULL);
 	ans[0] = c;
 	ans[1] = 0;
-	return (ans);	
+	return (ans);
 }
 
 char	*ft_putstr_str(char *str, int width)

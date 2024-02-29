@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static size_t	int_count(int n)
+size_t	int_count(int n)
 {
 	size_t	count;
 
