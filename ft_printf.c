@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/29 15:21:12 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:35:23 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	flag_sorter(char c, va_list ap, const char **format)
 		ft_zeropad(ap, &tempcount, format, 0);
 	else if (c == '.')
 		ft_precision(ap, &tempcount, format);
+	else if (ft_isdigit(c))
+		ft_printspaces(ap, &tempcount, format);
 	else
 		(*format)--;
 	return (tempcount);

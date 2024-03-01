@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 11:51:13 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:37:15 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_putmem_count(void *ptr, int *count);
 void	ft_leftjust(va_list ap, int *count, const char **format);
 void	ft_zeropad(va_list ap, int *count, const char **format, int flag);
 void	ft_precision(va_list ap, int *count, const char **format);
+void	ft_printspaces(va_list ap, int *count, const char **format);
 int		get_width(const char **format);
 char	*b_format_sorter(char c, va_list ap, int width, const char **format);
 char	*ft_putchar_str(char c, int width);

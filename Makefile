@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+         #
+#    By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 10:57:24 by rpandipe          #+#    #+#              #
-#    Updated: 2024/03/01 12:16:36 by rpandipe         ###   ########.fr        #
+#    Updated: 2024/03/01 18:46:10 by rpandipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CPPFLAGS	= -I libft
 RM		= rm -rf
 SRCS		= ft_printf.c ft_printstr.c ft_printnbr.c ft_printmem.c
 SRCSB		= ft_bonus1.c ft_bonussorter.c ft_savemem.c ft_savenbr.c \
-		  ft_savestr.c
+			  ft_savestr.c ft_width.c
 OBJS		= $(SRCS:.c=.o)
 OBJSB		= $(SRCSB:.c=.o)
 NAME		= libftprintf.a
@@ -25,7 +25,7 @@ LIBC		= ar rcs
 
 all: $(NAME)
 
-$(NAME) : $(OBJS) libft/libft.a
+$(NAME) : $(OBJS) $(OBJSB) libft/libft.a
 	cp libft/libft.a $(NAME)
 	$(LIBC) $(NAME) $(OBJS) $(OBJSB) 
 

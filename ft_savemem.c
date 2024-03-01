@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:48:37 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 11:35:58 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:22:55 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,19 @@ char	*ft_putmem_str(void *ptr, int width)
 	unsigned long long int	address;
 	char					*ans;
 	char					*temp;
+	int						size;
 
+	size = 0;
 	address = (unsigned long long int)ptr;
 	if (address == 0)
+		return (add_nil(width));
+	while (address != 0)
 	{
-		ans = add_nil(width);
-		return (ans);
+		size++;
+		address /= 16;
 	}
-	if (width == 0)
-	{
-		while (address != 0)
-		{
-			width++;
-			address /= 16;
-		}
-	}
+	if (width == 0 || width < size)
+		width = size + 2;
 	ans = (char *)malloc(sizeof(char) * (width + 1));
 	if (!ans)
 		return (NULL);
