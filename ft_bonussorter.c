@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 20:06:58 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/29 18:02:43 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:41:26 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 char	*b_format_sorter(char c, va_list ap, int width, const char **format)
 {
 	char	*ans;
+	int		w;
 
 	ans = NULL;
+	w = width;
 	if (c == 'c')
 		ans = ft_putchar_str(va_arg(ap, int), width);
 	else if (c == 's')
@@ -28,9 +30,9 @@ char	*b_format_sorter(char c, va_list ap, int width, const char **format)
 	else if (c == 'u')
 		ans = ft_putnbr_u_str(va_arg(ap, unsigned int), width);
 	else if (c == 'X')
-		ans = ft_putbase_str(va_arg(ap, unsigned int), "0123456789ABCDEF", width);
+		ans = ft_pb_str(va_arg(ap, unsigned int), "0123456789ABCDEF", w);
 	else if (c == 'x')
-		ans = ft_putbase_str(va_arg(ap, unsigned int), "0123456789abcdef", width);
+		ans = ft_pb_str(va_arg(ap, unsigned int), "0123456789abcdef", w);
 	else if (c == '%')
 		ans = ft_putchar_str('%', width);
 	else

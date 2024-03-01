@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:23:40 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/29 17:40:34 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:39:08 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_putnbr_str(int nbr, int width)
 	char	*str;
 
 	if (width == 0)
-		width = int_count(nbr);
+		width = int_counter(nbr);
 	ans = (char *)malloc(sizeof(char) * (width + 1));
 	if (!ans)
 		return (NULL);
@@ -31,9 +31,10 @@ char	*ft_putnbr_str(int nbr, int width)
 char	*ft_putnbr_u_str(unsigned int nbr, int width)
 {
 	char	*ans;
+	char	*str;
 
 	if (width == 0)
-		width = int_count(nbr);
+		width = int_counter(nbr);
 	ans = (char *)malloc(sizeof(char) * (width + 1));
 	if (!ans)
 		return (NULL);
@@ -47,7 +48,7 @@ static void	base_count(unsigned long nbr, int *width)
 {
 	if (nbr >= 16)
 	{
-		ft_putbase(size, base, nbr / size, count);
+		base_count(nbr / 16, width);
 	}
 	*width++;
 }
@@ -66,9 +67,9 @@ void	ft_savebase(unsigned int size, char *base, unsigned long nbr, char *ans)
 	ans[i] = 0;
 }
 
-char	*ft_putbase_str(unsigned int nbr, char *base, int width)
+char	*ft_pb_str(unsigned int nbr, char *base, int width)
 {
-	char	*ans;
+	char				*ans;
 	unsigned long		n;
 	unsigned int		size;
 

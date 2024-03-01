@@ -6,13 +6,13 @@
 /*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:07:54 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 15:39:33 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:37:48 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	int_count(int n)
+size_t	int_counter(int n)
 {
 	size_t	count;
 
@@ -32,7 +32,7 @@ size_t	int_count(int n)
 void	ft_putnbr_count(int nbr, int *count)
 {
 	ft_putnbr_fd(nbr, 1);
-	*count += int_count(nbr);
+	*count += int_counter(nbr);
 }
 
 void	ft_putnbr_u_count(unsigned int nbr, int *count)
