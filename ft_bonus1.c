@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bonus1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 17:54:19 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:23:21 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,23 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	char	*ans;
 	int		len;
 
-/*	if (**(format + 1) == '0')
-	{
-		ft_zeropad(*ap, count, format, 1);
-		return ;
-	}*/
 	width = get_width(format);
 	c = **format;
 	ans = b_format_sorter(c, ap, width, format);
 	if (c != **format)
 		return ;
+	if (ans[0] == 0)
+	{
+		write(1, "\0", 1);
+		*count += 1;
+		width -= 1;
+	}
 	len = ft_strlen(ans);
 	if (len < width)
-		ft_memset(ans + len, ' ', (size_t)(width - len));
+	{
+		//ft_memcpy(ans + width, ans + len, (size_t)(width - len));
+		ft_memset(ans +  len, ' ', (size_t)(width - len));
+	}
 	ft_putstr_count(ans, count);
 	free (ans);
 }

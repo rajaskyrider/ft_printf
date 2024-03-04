@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_savestr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:20:32 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:02 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:22:11 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 char	*ft_putchar_str(char c, int width)
 {
 	char	*ans;
+	int		i;
 
+	i = 1;
 	if (width == 0)
 		width = 1;
 	ans = (char *)malloc(sizeof(char) * (width + 1));
 	if (!ans)
 		return (NULL);
 	ans[0] = c;
-	ans[1] = 0;
+	while (i <= width)
+	{
+		ans[i] = 0;
+		i++;
+	}
 	return (ans);
 }
 
