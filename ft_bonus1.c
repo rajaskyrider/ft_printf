@@ -26,7 +26,7 @@ int	get_width(const char **format)
 	return (width);
 }
 
-void	ft_leftjust(va_list ap, int *count, const char **format)
+void	ft_leftjust(va_list *ap, int *count, const char **format)
 {
 	int		width;
 	char	c;
@@ -35,7 +35,7 @@ void	ft_leftjust(va_list ap, int *count, const char **format)
 
 /*	if (**(format + 1) == '0')
 	{
-		ft_zeropad(ap, count, format, 1);
+		ft_zeropad(*ap, count, format, 1);
 		return ;
 	}*/
 	width = get_width(format);
@@ -50,7 +50,7 @@ void	ft_leftjust(va_list ap, int *count, const char **format)
 	free (ans);
 }
 
-void	ft_zeropad(va_list ap, int *count, const char **format, int flag)
+void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 {
 	int		width;
 	char	c;
@@ -58,7 +58,7 @@ void	ft_zeropad(va_list ap, int *count, const char **format, int flag)
 	int		len;
 
 	width = get_width(format);
-	c == **format;
+	c = **format;
 	if (c == 'c' || c == 's' || c == 'p' || c == '%')
 		return ;
 	ans = b_format_sorter(c, ap, width, format);
@@ -79,7 +79,7 @@ void	ft_zeropad(va_list ap, int *count, const char **format, int flag)
 	free(ans);
 }
 
-void	ft_precision(va_list ap, int *count, const char **format)
+void	ft_precision(va_list *ap, int *count, const char **format)
 {
 	int		width;
 	char	c;
@@ -87,7 +87,7 @@ void	ft_precision(va_list ap, int *count, const char **format)
 	int		len;
 
 	width = get_width(format);
-	c == **format;
+	c = **format;
 	if (c == 'c' || c == 's' || c == 'p' || c == '%')
 		return ;
 	ans = b_format_sorter(c, ap, width, format);

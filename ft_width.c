@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_printspaces(va_list ap, int *count, const char **format)
+void	ft_printspaces(va_list *ap, int *count, const char **format)
 {
 	int		width;
 	char	c;

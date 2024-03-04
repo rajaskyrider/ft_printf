@@ -22,6 +22,11 @@ char	*ft_mtoa(char *ans, void *ptr, int size)
 	ans[size + 2] = 0;
 	i = size + 1;
 	address = (unsigned long long int)ptr;
+	if (address == 0)
+	{
+		ans[i] = '0';
+		return (ans);
+	}
 	while (address != 0)
 	{
 		ans[i] = "0123456789abcdef"[address % 16];
@@ -41,8 +46,7 @@ void	ft_putmem_count(void *ptr, int *count)
 	size = 0;
 	if (address == 0)
 	{
-		ft_putstr_count("(nil)", count);
-		return ;
+		size = 1;
 	}
 	while (address != 0)
 	{
