@@ -49,3 +49,17 @@ char	*ft_u_itoa(unsigned int n)
 	return (ans);
 }
 
+
+int	check_negative(char *ans)
+{
+	int	i;
+
+	i = 0;
+	while(ans[i])
+	{
+		if (ans[i] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
+}

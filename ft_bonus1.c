@@ -60,6 +60,7 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 	char	c;
 	char	*ans;
 	int		len;
+	int		offset;
 
 	width = get_width(format);
 	c = **format;
@@ -75,8 +76,9 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 			ft_memset(ans + len, '0', (size_t)(width - len));
 		else
 		{
-			ft_memmove(ans + (width - len), ans, len);
-			ft_memset(ans, '0', (size_t)(width - len));
+			offset = check_negative(ans);
+			ft_memmove(ans + offset + (width - len), ans + offset, len - offset);
+			ft_memset(ans + offset, '0', (size_t)(width - len));
 		}
 	}
 	ft_putstr_count(ans, count);

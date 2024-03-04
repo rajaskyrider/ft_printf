@@ -41,5 +41,6 @@ char	*ft_putmem_str(void *ptr, int width);
 size_t	int_counter(int n);
 int		flag_sorter(char c, va_list *ap, const char **format);
 char	*ft_u_itoa(unsigned int n);
+int	check_negative(char *ans);
 
 #endif
