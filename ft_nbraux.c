@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_savestr.c                                       :+:      :+:    :+:   */
+/*   ft_nbraux.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 09:20:32 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/04 15:32:36 by rpandipe         ###   ########.fr       */
+/*   Created: 2024/03/04 18:01:05 by rpandipe          #+#    #+#             */
+/*   Updated: 2024/03/04 19:12:39 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_putchar_str(char c, int width)
+static size_t	int_u_count(unsigned int n)
+{
+	size_t	count;
+
+	count = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		count++;
+		n /= 10;
+	}
+	return (count);
+}
+
+char	*ft_u_itoa(unsigned int n)
 {
 	char	*ans;
-	int		i;
+	size_t	count;
 
-	i = 1;
-	if (width == 0)
-		width = 1;
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	count = int_u_count(n);
+	ans = (char *)malloc(sizeof(char) * (count + 1));
 	if (!ans)
 		return (NULL);
-	ans[0] = c;
-	while (i <= width)
+	ans[count] = '\0';
+	count--;
+	if (n == 0)
+		ans[0] = '0';
+	while (n != 0)
 	{
-		ans[i] = 0;
-		i++;
+		ans[count] = (n % 10) + '0';
+		n = n / 10;
+		count--;
 	}
 	return (ans);
 }
 
-char	*ft_putstr_str(char *str, int width)
-{
-	char	*ans;
-	int		len;
-
-	len = ft_strlen(str);
-	if (width == 0 || width < len)
-		width = len;
-	ans = (char *)ft_calloc((width + 1), sizeof(char));
-	if (!ans)
-		return (NULL);
-	ft_strlcpy(ans, str, width + 1);
-	return (ans);
-}

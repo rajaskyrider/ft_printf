@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_savemem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:48:37 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 17:22:55 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:23:43 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 char	*add_nil(int width)
 {
 	char	*ans;
+	int		len;
 
-	if (width == 0)
-		width = ft_strlen("(nil)");
+	len = ft_strlen("(nil)");
+	if (width == 0 || width < len)
+		width = len;
 	ans = (char *)malloc(sizeof(char) * (width + 1));
 	ft_strlcpy(ans, "(nil)", width + 1);
 	return (ans);
@@ -36,7 +38,7 @@ static char	*ft_mltoa(char *ans, void *ptr)
 		size++;
 		address /= 16;
 	}
-	ans = (char *)malloc(sizeof(char) * (size + 3));
+	ans = (char *)ft_calloc((size + 3), sizeof(char));
 	ans[0] = '0';
 	ans[1] = 'x';
 	ans[size + 2] = 0;
@@ -67,9 +69,9 @@ char	*ft_putmem_str(void *ptr, int width)
 		size++;
 		address /= 16;
 	}
-	if (width == 0 || width < size)
+	if (width == 0 || width < (size + 2))
 		width = size + 2;
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	ans = (char *)ft_calloc((width + 1), sizeof(char));
 	if (!ans)
 		return (NULL);
 	temp = ft_mltoa(ans, ptr);

@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 18:37:15 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:07:23 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ char	*ft_pb_str(unsigned int nbr, char *base, int width);
 char	*ft_putmem_str(void *ptr, int width);
 size_t	int_counter(int n);
 int		flag_sorter(char c, va_list *ap, const char **format);
+char	*ft_u_itoa(unsigned int n);
 
 #endif

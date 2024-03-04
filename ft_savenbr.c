@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_savenbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:23:40 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 17:53:54 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:28:07 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ char	*ft_putnbr_str(int nbr, int width)
 {
 	char	*ans;
 	char	*str;
+	int		len;
 
-	if (width == 0)
-		width = int_counter(nbr);
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	str = ft_itoa(nbr);
+	len = ft_strlen(str);
+	if (width == 0 || width < len)
+		width = len;
+	ans = (char *)ft_calloc((width + 1), sizeof(char));
 	if (!ans)
 		return (NULL);
-	str = ft_itoa(nbr);
 	ft_strlcpy(ans, str, width + 1);
 	free(str);
 	return (ans);
@@ -32,13 +34,15 @@ char	*ft_putnbr_u_str(unsigned int nbr, int width)
 {
 	char	*ans;
 	char	*str;
+	int		len;
 
-	if (width == 0)
-		width = int_counter(nbr);
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	str = ft_u_itoa(nbr);
+	len = ft_strlen(str);
+	if (width == 0 || width < len)
+		width = len;
+	ans = (char *)ft_calloc((width + 1), sizeof(char));
 	if (!ans)
 		return (NULL);
-	str = ft_itoa(nbr);
 	ft_strlcpy(ans, str, width + 1);
 	free(str);
 	return (ans);
@@ -50,7 +54,7 @@ static void	base_count(unsigned long nbr, int *width)
 	{
 		base_count(nbr / 16, width);
 	}
-	*width++;
+	(*width)++;
 }
 
 void	ft_savebase(unsigned int size, char *base, unsigned long nbr, char *ans)
@@ -85,11 +89,14 @@ char	*ft_pb_str(unsigned int nbr, char *base, int width)
 	char				*ans;
 	unsigned long		n;
 	unsigned int		size;
+	int					len;
 
+	len = 0;
 	n = (unsigned long)nbr;
-	if (width == 0)
-		base_count(n, &width);
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	base_count(n, &len);
+	if (width == 0 || width < len)
+		width = len;
+	ans = (char *)ft_calloc((width + 1), sizeof(char));
 	if (!ans)
 		return (NULL);
 	size = 16;

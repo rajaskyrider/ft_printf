@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/04 11:23:21 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:10:36 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	ans = b_format_sorter(c, ap, width, format);
 	if (c != **format)
 		return ;
-	if (ans[0] == 0)
+	if (ans[0] == 0 && c == 'c')
 	{
 		write(1, "\0", 1);
 		*count += 1;
