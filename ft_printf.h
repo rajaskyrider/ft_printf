@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 09:45:01 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:28:46 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag);
 void	ft_precision(va_list *ap, int *count, const char **format);
 void	ft_printspaces(va_list *ap, int *count, const char **format);
 int		get_width(const char **format);
-char	*b_format_sorter(char c, va_list *ap, int width, const char **format);
+char	*b_format_sorter(char c, va_list *ap, int *wc[2], const char **format);
 char	*ft_putchar_str(char c, int width);
 char	*ft_putstr_str(char *str, int width);
 char	*ft_putnbr_str(int nbr, int width);
