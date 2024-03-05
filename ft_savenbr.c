@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:23:40 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 09:45:59 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:56:49 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_savebase(unsigned int size, char *base, unsigned long nbr, char *ans)
 	ans[i] = 0;
 }
 
-char	*ft_pb_str(unsigned int nbr, char *base, int width)
+char	*ft_pb_str(unsigned int nbr, char *base, int width, char x)
 {
 	char				*ans;
 	unsigned long		n;
@@ -101,5 +101,7 @@ char	*ft_pb_str(unsigned int nbr, char *base, int width)
 		return (NULL);
 	size = 16;
 	ft_savebase(size, base, n, ans);
+	if (x == '#' && ft_strncmp(ans, "0", len))
+		ans = add_x(ans, len, width, base);
 	return (ans);
 }

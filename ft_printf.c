@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 18:35:23 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:24:34 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,26 @@ void	format_sorter(char c, va_list *ap, int *count, const char **format)
 	else if (c == '%')
 		ft_putchar_count('%', count);
 	else
-		*count += flag_sorter(c, ap, format);
+		*count += flag_sorter((char []){c, 'N'}, ap, format);
 }
 
-int	flag_sorter(char c, va_list *ap, const char **format)
+int	flag_sorter(char c[2], va_list *ap, const char **format)
 {
 	int	tempcount;
 
 	tempcount = 0;
-	if (c == '-')
+	if (c[0] == '-')
 		ft_leftjust(ap, &tempcount, format);
-	else if (c == '0')
+	else if (c[0] == '0')
 		ft_zeropad(ap, &tempcount, format, 0);
-	else if (c == '.')
+	else if (c[0] == '.')
 		ft_precision(ap, &tempcount, format);
-	else if (ft_isdigit(c))
+	else if (ft_isdigit(c[0]) || c[0] == ' ')
 		ft_printspaces(ap, &tempcount, format);
+	else if (c[0] == '+')
+		ft_plussign(ap, &tempcount, format, c[1]);
+	else if (c[0] == '#')
+		ft_hashsign(ap, &tempcount, format, c[1]);
 	else
 		(*format)--;
 	return (tempcount);

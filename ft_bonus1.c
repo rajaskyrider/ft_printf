@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 10:28:26 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:25:41 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 
 	width = get_width(format);
 	c = **format;
-	ans = b_format_sorter(c, ap, (int *[]){&width, count}, format);
+	ans = b_format_sorter((char []){c, '-'}, ap, \
+							(int *[]){&width, count}, format);
 	if (c != **format)
 		return ;
 	if (ans[0] == 0 && c == 'c')
@@ -88,7 +89,8 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 	c = **format;
 	if (c == 'c' || c == 's' || c == 'p' || c == '%')
 		return ;
-	ans = b_format_sorter(c, ap, (int *[]){&width, count}, format);
+	ans = b_format_sorter((char []){c, '0'}, ap, \
+							(int *[]){&width, count}, format);
 	if (c != **format)
 		return ;
 	len = ft_strlen(ans);
@@ -113,7 +115,8 @@ void	ft_precision(va_list *ap, int *count, const char **format)
 
 	width = get_width(format);
 	c = **format;
-	p_ans = b_format_sorter(c, ap, (int *[]){&width, count}, format);
+	p_ans = b_format_sorter((char []){c, '.'}, ap, \
+							(int *[]){&width, count}, format);
 	len = ft_strlen(p_ans);
 	if (c != **format)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:01:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 09:49:41 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:23:27 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,30 @@ int	check_negative(char *ans)
 	i = 0;
 	while (ans[i])
 	{
-		if (ans[i] == '-')
+		if (ans[i] == '-' || ans[i] == '+')
 			return (1);
 		i++;
 	}
 	return (0);
+}
+
+char	*add_x(char *ans, int len, int width, char *base)
+{
+	char	x;
+	char	*temp;
+
+	x = 'x';
+	if (base[15] == 'F')
+		x = 'X';
+	if (width <= len + 2)
+	{
+		temp = ft_calloc(len + 3, sizeof(char));
+		ft_strlcpy(temp, ans, len + 1);
+		free(ans);
+		ans = temp;
+	}
+	ft_memmove(ans + 2, ans, len);
+	ans[0] = '0';
+	ans[1] = x;
+	return (ans);
 }

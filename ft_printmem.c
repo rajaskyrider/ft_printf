@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printmem.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:06:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/28 16:55:50 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:20:00 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ char	*ft_mtoa(char *ans, void *ptr, int size)
 	address = (unsigned long long int)ptr;
 	if (address == 0)
 	{
-		ans[i] = '0';
+		free (ans);
+		ans = (char *)malloc(sizeof(char) * 6);
+		if (!ans)
+			return (NULL);
+		ft_strlcpy(ans, "(nil)", 6);
 		return (ans);
 	}
 	while (address != 0)
