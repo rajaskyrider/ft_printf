@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:23:40 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/04 19:28:07 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:45:59 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_savebase(unsigned int size, char *base, unsigned long nbr, char *ans)
 	}
 	ans[i++] = base[nbr % size];
 	end = i - 1;
-    	while (start < end) 
+	while (start < end)
 	{
 		temp = ans[start];
 		ans[start] = ans[end];

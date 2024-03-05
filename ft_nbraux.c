@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:01:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/04 19:12:39 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:49:41 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ char	*ft_u_itoa(unsigned int n)
 	return (ans);
 }
 
-
 int	check_negative(char *ans)
 {
 	int	i;
 
 	i = 0;
-	while(ans[i])
+	while (ans[i])
 	{
 		if (ans[i] == '-')
 			return (1);

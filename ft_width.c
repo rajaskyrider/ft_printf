@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/01 18:44:15 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:46:47 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	ft_printspaces(va_list *ap, int *count, const char **format)
 		ft_memset(ans, ' ', (size_t)(width - len));
 	}
 	ft_putstr_count(ans, count);
-	free(ans);
+	free (ans);
 }

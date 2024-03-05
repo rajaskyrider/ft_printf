@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 09:37:33 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:49:01 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,7 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	}
 	len = ft_strlen(ans);
 	if (len < width)
-	{
-		//ft_memcpy(ans + width, ans + len, (size_t)(width - len));
-		ft_memset(ans +  len, ' ', (size_t)(width - len));
-	}
+		ft_memset(ans + len, ' ', (size_t)(width - len));
 	ft_putstr_count(ans, count);
 	free (ans);
 }
@@ -103,7 +100,7 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 			ans = padzeros(ans, width, len, 'c');
 	}
 	ft_putstr_count(ans, count);
-	free(ans);
+	free (ans);
 }
 
 void	ft_precision(va_list *ap, int *count, const char **format)
@@ -126,10 +123,10 @@ void	ft_precision(va_list *ap, int *count, const char **format)
 		ft_strlcpy(ans, p_ans, (width + 1));
 		free(p_ans);
 	}
-	else 
+	else
 		ans = p_ans;
 	if (c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
 		ans = padzeros(ans, width, len, '.');
 	ft_putstr_count(ans, count);
-	free(ans);
+	free (ans);
 }
