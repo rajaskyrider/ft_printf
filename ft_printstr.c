@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpandipe <rpandipe@student.42luxembou      +#+  +:+       +#+        */
+/*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:40:06 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/02/27 18:04:05 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:25:28 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

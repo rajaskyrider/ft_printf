@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:01:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 20:23:27 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/06 12:21:36 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,24 @@ char	*add_x(char *ans, int len, int width, char *base)
 	ft_memmove(ans + 2, ans, len);
 	ans[0] = '0';
 	ans[1] = x;
+	return (ans);
+}
+
+char	*p_str_special(char *p_ans, int width)
+{
+	char	*ans;
+	
+	if (!(ft_strncmp(p_ans, "(null)", 8)))
+	{
+		ans = (char *)ft_calloc((1), sizeof(char));
+		ans[0] = 0;
+		free(p_ans);
+	}
+	else
+	{
+		ans = (char *)ft_calloc((width + 1), sizeof(char));
+		ft_strlcpy(ans, p_ans, (width + 1));
+		free(p_ans);
+	}
 	return (ans);
 }

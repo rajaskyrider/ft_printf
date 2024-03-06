@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:48:37 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 19:13:29 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/06 12:32:09 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*add_nil(int width)
 	len = ft_strlen("(nil)");
 	if (width == 0 || width < len)
 		width = len;
-	ans = (char *)malloc(sizeof(char) * (width + 1));
+	ans = (char *)ft_calloc(width + 1, sizeof(char));
 	ft_strlcpy(ans, "(nil)", width + 1);
 	return (ans);
 }

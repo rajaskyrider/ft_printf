@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 20:21:11 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:22:46 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putnbr_base(unsigned int nbr, char *base, int *count);
 void	ft_putmem_count(void *ptr, int *count);
 void	ft_leftjust(va_list *ap, int *count, const char **format);
 void	ft_zeropad(va_list *ap, int *count, const char **format, int flag);
-void	ft_precision(va_list *ap, int *count, const char **format);
+void	ft_precision(va_list *ap, int *count, const char **format, char prev);
 void	ft_printspaces(va_list *ap, int *count, const char **format);
 int		get_width(const char **format);
 char	*b_format_sorter(char c[2], va_list *ap, int *wc[2], \
@@ -46,4 +46,6 @@ int		check_negative(char *ans);
 void	ft_plussign(va_list *ap, int *count, const char **format, char prev);
 void	ft_hashsign(va_list *ap, int *count, const char **format, char prev);
 char	*add_x(char *ans, int len, int width, char *base);
+char	*padzeros(char *ans, int width, int len, char flag);
+char	*p_str_special(char *p_ans, int width);
 #endif

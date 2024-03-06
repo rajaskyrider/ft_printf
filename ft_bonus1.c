@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/05 20:25:41 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:23:22 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 	char	c;
 	char	*ans;
 	int		len;
-	int		offset;
 
 	width = get_width(format);
 	c = **format;
@@ -101,35 +100,6 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 		else
 			ans = padzeros(ans, width, len, 'c');
 	}
-	ft_putstr_count(ans, count);
-	free (ans);
-}
-
-void	ft_precision(va_list *ap, int *count, const char **format)
-{
-	int		width;
-	char	c;
-	char	*p_ans;
-	char	*ans;
-	int		len;
-
-	width = get_width(format);
-	c = **format;
-	p_ans = b_format_sorter((char []){c, '.'}, ap, \
-							(int *[]){&width, count}, format);
-	len = ft_strlen(p_ans);
-	if (c != **format)
-		return ;
-	if (c == 's' && len > width)
-	{
-		ans = (char *)ft_calloc((width + 1), sizeof(char));
-		ft_strlcpy(ans, p_ans, (width + 1));
-		free(p_ans);
-	}
-	else
-		ans = p_ans;
-	if (c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X')
-		ans = padzeros(ans, width, len, '.');
 	ft_putstr_count(ans, count);
 	free (ans);
 }
