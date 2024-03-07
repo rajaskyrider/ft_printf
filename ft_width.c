@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:28:57 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/07 11:15:14 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,33 @@ char	*deal_d(char *ans, int len, int width)
 
 int		check_null(char *ans)
 {
-	int i;
 	int	flag;
 
-	i = 0;
-	flag = 1;
-	while (ans[i])
-	{
-		if (ans[i] != ' ')
-		{
-			flag = 0;
-			break ;
-		}
-		i++;
-	}
+	flag = 0;
+	if  (ans[0] == 0)
+		flag = 1;
 	return (flag);
 }
 
-void	deal_c(char *ans, char c, int *count)
+void	deal_c(char *ans, char c, int *count, int width)
 {
 	int		len;
 	int		i;
 	int		flag;
 
 	i = 0;
-	flag = check_null(ans);
+	flag = 0;
+	len = ft_strlen(ans);
+	if (c == 'c')
+		flag = check_null(ans);
+	if (len < width)
+	{
+		ft_memmove(ans + (width - len), ans, len);
+		ft_memset(ans, ' ', (size_t)(width - len));
+	}
+	len = ft_strlen(ans);
 	if (c == 'c' && flag == 1)
 	{
-		len = ft_strlen(ans);
 		while(i < len - 1)
 		{
 			*count += write(1, &ans[i], 1);
@@ -63,7 +62,6 @@ void	deal_c(char *ans, char c, int *count)
 	}
 	else
 		ft_putstr_count(ans, count);
-	free (ans);
 }
 
 void	ft_printspaces(va_list *ap, int *count, const char **format)
@@ -84,10 +82,6 @@ void	ft_printspaces(va_list *ap, int *count, const char **format)
 	len = ft_strlen(ans);
 	if (width == 0 && (c == 'd' || c == 'i') && !(check_negative(ans)))
 		ans = deal_d(ans, len, len + 1);
-	if (len < width)
-	{
-		ft_memmove(ans + (width - len), ans, len);
-		ft_memset(ans, ' ', (size_t)(width - len));
-	}
-	deal_c(ans, c, count);
+	deal_c(ans, c, count, width);
+	free (ans);
 }
