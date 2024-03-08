@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 15:49:38 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:08:12 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	deal_c(char *ans, char c, int *count, int width)
 	}
 	if (c == 'c' && flag == 1)
 	{
-		while (i < (ft_strlen(ans) - 1))
+		while ((size_t)i < (ft_strlen(ans) - 1))
 		{
 			*count += write(1, &ans[i], 1);
 			i++;
