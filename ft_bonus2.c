@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 09:50:29 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 09:48:49 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:46:31 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_plussign(va_list *ap, int *count, const char **format, char prev)
 	len = ft_strlen(ans);
 	if (check_negative(ans) == 0)
 		ans = add_plus(ans, len, width);
-	//len += check_negative(ans);
 	len = ft_strlen(ans);
 	if (len < width)
 	{

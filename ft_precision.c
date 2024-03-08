@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:03:14 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 11:53:22 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:41:37 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*check_prev(char *ans, int width, char prev, const char *dup)
 	ft_strlcpy(new, ans, len + 1);
 	free(ans);
 	ans = new;
-	if (prev == ' ' || prev == '0' || prev == '+'|| prev == '#')
+	if (prev == ' ' || prev == '0' || prev == '+' || prev == '#')
 	{
 		ft_memmove(ans + (width - len), ans, len);
 		ft_memset(ans, ' ', (size_t)(width - len));
@@ -55,7 +55,7 @@ void	deal_precision(char *ans, char prev, const char *dup, int *count)
 	int		width;
 
 	len = ft_strlen(ans);
-	while(*dup != '.')
+	while (*dup != '.')
 		dup--;
 	while (*dup != prev && *dup != '%')
 		dup--;
@@ -78,7 +78,8 @@ void	deal_precision(char *ans, char prev, const char *dup, int *count)
 
 void	special_case(char *ans, int width, char c)
 {
-	if ((c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X') && width == 0 && ans[0] == '0')
+	if ((c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X') \
+		&& width == 0 && ans[0] == '0')
 		ans[0] = 0;
 }
 

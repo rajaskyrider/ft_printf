@@ -6,27 +6,28 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:24:45 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 11:55:03 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:51:43 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		check_zeros(char *ans)
+int	check_zeros(char *ans)
 {
 	int	i;
-	int flag;
+	int	flag;
 
 	i = 0;
 	flag = 0;
 	while (ans[i] != 0)
 	{
-		if(ans[i] != '0')
+		if (ans[i] != '0')
 			flag = 1;
 		i++;
 	}
 	return (flag);
 }
+
 char	*deal_plus_c(char *ans, int width, char *flags, char c)
 {
 	char	chk;
@@ -43,13 +44,14 @@ char	*deal_plus_c(char *ans, int width, char *flags, char c)
 	if (c == 'X')
 		base = "0123456789ABCDEF";
 	if (hschk == '#' && (check_zeros(ans) == 1))
-		ans = add_x(ans, len, width, base);
+		ans = add_x(ans, len, 0, base);
 	if (chk == '+' && !check_negative(ans) && hschk != '#')
 		ans = add_plus(ans, len, width);
 	if (spchk == ' ' && (c == 'd' || c == 'i') && !check_negative(ans))
-		ans = add_space( ans,len, width);
+		ans = add_space(ans, len, width);
 	return (ans);
 }
+
 char	*deal_plus(char *ans, int width, const char *dup)
 {
 	char	chk;
@@ -61,7 +63,7 @@ char	*deal_plus(char *ans, int width, const char *dup)
 	hschk = *dup;
 	while (*dup != '%')
 		dup--;
-	while(*dup != '.')
+	while (*dup != '.')
 	{
 		if (*dup == '+')
 			chk = '+';
@@ -81,7 +83,7 @@ char	get_prev(char prev, const char *dup)
 {
 	while (*dup != '%')
 		dup--;
-	while(*dup != '.')
+	while (*dup != '.')
 	{
 		if (*dup == '-')
 			prev = '-';

@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 09:43:29 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:49:38 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	*deal_d(char *ans, int len, int width)
 	return (ans);
 }
 
-int		check_null(char *ans)
+int	check_null(char *ans)
 {
 	int	flag;
 
 	flag = 0;
-	if  (ans[0] == 0)
+	if (ans[0] == 0)
 		flag = 1;
 	return (flag);
 }
@@ -55,10 +55,9 @@ void	deal_c(char *ans, char c, int *count, int width)
 		ft_memmove(ans + (width - len), ans, len);
 		ft_memset(ans, ' ', (size_t)(width - len));
 	}
-	len = ft_strlen(ans);
 	if (c == 'c' && flag == 1)
 	{
-		while(i < len - 1)
+		while (i < (ft_strlen(ans) - 1))
 		{
 			*count += write(1, &ans[i], 1);
 			i++;
@@ -78,7 +77,7 @@ void	ft_printspaces(va_list *ap, int *count, const char **format)
 	char	flag;
 
 	flag = **format;
-	if ( flag != ' ')
+	if (flag != ' ')
 		(*format)--;
 	width = get_width(format);
 	c = **format;
@@ -87,7 +86,8 @@ void	ft_printspaces(va_list *ap, int *count, const char **format)
 	if (c != **format)
 		return ;
 	len = ft_strlen(ans);
-	if ((width == 0 || flag == ' ') && (c == 'd' || c == 'i') && !(check_negative(ans)))
+	if ((width == 0 || flag == ' ') && \
+		(c == 'd' || c == 'i') && !(check_negative(ans)))
 		ans = deal_d(ans, len, width);
 	deal_c(ans, c, count, width);
 	free (ans);

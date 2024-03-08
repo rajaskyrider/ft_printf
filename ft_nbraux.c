@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:01:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 12:21:36 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:39:57 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*add_x(char *ans, int len, int width, char *base)
 char	*p_str_special(char *p_ans, int width)
 {
 	char	*ans;
-	
+
 	if (!(ft_strncmp(p_ans, "(null)", 8)))
 	{
 		ans = (char *)ft_calloc((1), sizeof(char));

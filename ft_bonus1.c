@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 09:18:20 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:36:33 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	free (ans);
 }
 
-int		deal_char(va_list *ap, int *count, const char **format, char c)
+int	deal_char(va_list *ap, int *count, const char **format, char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == '%')
 	{
@@ -95,14 +95,11 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 	char	c;
 	char	*ans;
 	int		len;
-	//const char **org;
 
-	//org = (const char **)malloc(sizeof(const char *));
-	//*org = *format;
 	width = get_width(format);
 	c = **format;
 	if (deal_char(ap, count, format, c) == 1)
-		return;
+		return ;
 	ans = b_format_sorter((char []){c, '0'}, ap, \
 							(int *[]){&width, count}, format);
 	if (c != **format)
