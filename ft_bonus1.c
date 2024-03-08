@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 15:23:22 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:18:20 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,32 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	free (ans);
 }
 
+int		deal_char(va_list *ap, int *count, const char **format, char c)
+{
+	if (c == 'c' || c == 's' || c == 'p' || c == '%')
+	{
+		while (**format != '0' || ft_isdigit(*(*format -1)))
+			(*format)--;
+		ft_printspaces(ap, count, format);
+		return (1);
+	}
+	return (0);
+}
+
 void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 {
 	int		width;
 	char	c;
 	char	*ans;
 	int		len;
+	//const char **org;
 
+	//org = (const char **)malloc(sizeof(const char *));
+	//*org = *format;
 	width = get_width(format);
 	c = **format;
-	if (c == 'c' || c == 's' || c == 'p' || c == '%')
-		return ;
+	if (deal_char(ap, count, format, c) == 1)
+		return;
 	ans = b_format_sorter((char []){c, '0'}, ap, \
 							(int *[]){&width, count}, format);
 	if (c != **format)

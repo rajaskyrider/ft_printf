@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:03:14 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 15:22:33 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:53:22 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int	get_prev_width(const char *format)
 	return (width);
 }
 
-char	*check_prev(char *ans, int len, int width, char prev)
+char	*check_prev(char *ans, int width, char prev, const char *dup)
 {
-	char *new;
+	char	*new;
+	int		len;
 
+	len = ft_strlen(ans);
+	prev = get_prev(prev, dup);
 	new = (char *)ft_calloc(width + 1, sizeof(char));
 	ft_strlcpy(new, ans, len + 1);
 	free(ans);
 	ans = new;
-	if (prev == ' ' || prev == '0')
+	if (prev == ' ' || prev == '0' || prev == '+'|| prev == '#')
 	{
 		ft_memmove(ans + (width - len), ans, len);
 		ft_memset(ans, ' ', (size_t)(width - len));
@@ -63,9 +66,11 @@ void	deal_precision(char *ans, char prev, const char *dup, int *count)
 			dup--;
 	}
 	width = get_prev_width(dup);
+	ans = deal_plus(ans, width, dup);
+	len = ft_strlen(ans);
 	if (len < width)
 	{
-		ans = check_prev(ans, len, width, prev);
+		ans = check_prev(ans, width, prev, dup);
 	}
 	ft_putstr_count(ans, count);
 	free (ans);

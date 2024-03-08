@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 15:22:46 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:58:49 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,8 @@ void	ft_hashsign(va_list *ap, int *count, const char **format, char prev);
 char	*add_x(char *ans, int len, int width, char *base);
 char	*padzeros(char *ans, int width, int len, char flag);
 char	*p_str_special(char *p_ans, int width);
+char	*deal_plus(char *ans, int width, const char *dup);
+char	get_prev(char prev, const char *dup);
+char	*add_plus(char *ans, int len, int width);
+char	*add_space(char *ans, int len, int width);
 #endif
