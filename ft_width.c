@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 11:19:21 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:54:05 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,7 @@ char	*deal_spcomb(char *ans, const char *dup, char c)
 	width = get_prev_width(dup);
 	new = (char *)ft_calloc((width + 1), sizeof(char));
 	new[0] = ' ';
-	if (c == '-')
-		ft_strlcpy(new + 1, ans, width);
-	else
-		ft_strlcpy(new + 1, ans + 1, width);
+	ft_strlcpy(new + 1, ans, width + 1);
 	free(ans);
 	ans = new;
 	return (ans);

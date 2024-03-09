@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 11:18:35 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:57:27 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*padzeros(char *ans, int width, int len, char flag)
 	char	*new;
 
 	offset = check_negative(ans);
+	if (flag == ' ')
+		offset = 1;
 	if (offset == 1 && flag == '.')
 	{
 		width = width + 1;
@@ -70,11 +72,11 @@ void	ft_leftjust(va_list *ap, int *count, const char **format, char prev)
 		*count += 1;
 		width -= 1;
 	}
+	if ((c == 'd' || c == 'i') && prev == ' ')
+		ans = deal_spcomb(ans, *format, '-');
 	len = ft_strlen(ans);
 	if (len < width)
 		ft_memset(ans + len, ' ', (size_t)(width - len));
-	if ((c == 'd' || c == 'i') && prev == ' ')
-		ans = deal_spcomb(ans, *format, '-');
 	ft_putstr_count(ans, count);
 	free (ans);
 }
@@ -106,16 +108,16 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, char flag)
 							(int *[]){&width, count}, format);
 	if (c != **format)
 		return ;
+	if ((c == 'd' || c == 'i') && flag == ' ')
+		ans = deal_spcomb(ans, *format, '0');
 	len = ft_strlen(ans);
 	if (len < width)
 	{
 		if (flag == '-')
 			ft_memset(ans + len, '0', (size_t)(width - len));
 		else
-			ans = padzeros(ans, width, len, 'c');
+			ans = padzeros(ans, width, len, flag);
 	}
-	if ((c == 'd' || c == 'i') && flag == ' ')
-		ans = deal_spcomb(ans, *format, '0');
 	ft_putstr_count(ans, count);
 	free (ans);
 }
