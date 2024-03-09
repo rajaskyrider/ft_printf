@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 12:19:38 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:38:10 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_leftjust(va_list *ap, int *count, const char **format, char prev)
 		width -= 1;
 	}
 	if (c == 'd' || c == 'i' || c == 'x' || c == 'X')
-		ans = deal_bonuscomb(prev, ans, *format, '-');;
+		ans = deal_bonuscomb(prev, ans, *format, '-');
 	len = ft_strlen(ans);
 	if (len < width)
 		ft_memset(ans + len, ' ', (size_t)(width - len));
