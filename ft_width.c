@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 18:08:12 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:19:21 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*deal_d(char *ans, int len, int width)
 {
 	char	*new;
 
-	if (len > width)
+	if (len >= width)
 	{
 		width = len + 1;
 		new = (char *)ft_calloc((width + 1), sizeof(char));
@@ -68,6 +68,29 @@ void	deal_c(char *ans, char c, int *count, int width)
 		ft_putstr_count(ans, count);
 }
 
+char	*deal_spcomb(char *ans, const char *dup, char c)
+{
+	int		width;
+	char	*new;
+
+	if (check_negative(ans) == 1)
+		return (ans);
+	while (*dup != '%')
+		dup--;
+	while (*dup != c)
+		dup++;
+	width = get_prev_width(dup);
+	new = (char *)ft_calloc((width + 1), sizeof(char));
+	new[0] = ' ';
+	if (c == '-')
+		ft_strlcpy(new + 1, ans, width);
+	else
+		ft_strlcpy(new + 1, ans + 1, width);
+	free(ans);
+	ans = new;
+	return (ans);
+}
+
 void	ft_printspaces(va_list *ap, int *count, const char **format)
 {
 	int		width;
@@ -79,7 +102,10 @@ void	ft_printspaces(va_list *ap, int *count, const char **format)
 	flag = **format;
 	if (flag != ' ')
 		(*format)--;
-	width = get_width(format);
+	if (*(*format + 1) != '0')
+		width = get_width(format);
+	else
+		(*format)++;
 	c = **format;
 	ans = b_format_sorter((char []){c, ' '}, ap, \
 							(int *[]){&width, count}, format);

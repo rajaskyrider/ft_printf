@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 10:58:49 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:03:41 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_putnbr_count(int nbr, int *count);
 void	ft_putnbr_u_count(unsigned int nbr, int *count);
 void	ft_putnbr_base(unsigned int nbr, char *base, int *count);
 void	ft_putmem_count(void *ptr, int *count);
-void	ft_leftjust(va_list *ap, int *count, const char **format);
-void	ft_zeropad(va_list *ap, int *count, const char **format, int flag);
+void	ft_leftjust(va_list *ap, int *count, const char **format, char prev);
+void	ft_zeropad(va_list *ap, int *count, const char **format, char flag);
 void	ft_precision(va_list *ap, int *count, const char **format, char prev);
 void	ft_printspaces(va_list *ap, int *count, const char **format);
 int		get_width(const char **format);
@@ -52,4 +52,6 @@ char	*deal_plus(char *ans, int width, const char *dup);
 char	get_prev(char prev, const char *dup);
 char	*add_plus(char *ans, int len, int width);
 char	*add_space(char *ans, int len, int width);
+int		get_prev_width(const char *format);
+char	*deal_spcomb(char *ans, const char *dup, char c);
 #endif

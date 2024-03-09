@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:03:56 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/06 15:23:30 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:04:17 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	flag_sorter(char c[2], va_list *ap, const char **format)
 
 	tempcount = 0;
 	if (c[0] == '-')
-		ft_leftjust(ap, &tempcount, format);
+		ft_leftjust(ap, &tempcount, format, c[1]);
 	else if (c[0] == '0')
-		ft_zeropad(ap, &tempcount, format, 0);
+		ft_zeropad(ap, &tempcount, format, c[1]);
 	else if (c[0] == '.')
 		ft_precision(ap, &tempcount, format, c[1]);
 	else if (ft_isdigit(c[0]) || c[0] == ' ')

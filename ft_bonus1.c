@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 15:36:33 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:18:35 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*padzeros(char *ans, int width, int len, char flag)
 	return (ans);
 }
 
-void	ft_leftjust(va_list *ap, int *count, const char **format)
+void	ft_leftjust(va_list *ap, int *count, const char **format, char prev)
 {
 	int		width;
 	char	c;
@@ -73,13 +73,15 @@ void	ft_leftjust(va_list *ap, int *count, const char **format)
 	len = ft_strlen(ans);
 	if (len < width)
 		ft_memset(ans + len, ' ', (size_t)(width - len));
+	if ((c == 'd' || c == 'i') && prev == ' ')
+		ans = deal_spcomb(ans, *format, '-');
 	ft_putstr_count(ans, count);
 	free (ans);
 }
 
 int	deal_char(va_list *ap, int *count, const char **format, char c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == '%')
+	if (c == 'c' || c == 's' || c == 'p')
 	{
 		while (**format != '0' || ft_isdigit(*(*format -1)))
 			(*format)--;
@@ -89,7 +91,7 @@ int	deal_char(va_list *ap, int *count, const char **format, char c)
 	return (0);
 }
 
-void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
+void	ft_zeropad(va_list *ap, int *count, const char **format, char flag)
 {
 	int		width;
 	char	c;
@@ -107,11 +109,13 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, int flag)
 	len = ft_strlen(ans);
 	if (len < width)
 	{
-		if (flag == 1)
+		if (flag == '-')
 			ft_memset(ans + len, '0', (size_t)(width - len));
 		else
 			ans = padzeros(ans, width, len, 'c');
 	}
+	if ((c == 'd' || c == 'i') && flag == ' ')
+		ans = deal_spcomb(ans, *format, '0');
 	ft_putstr_count(ans, count);
 	free (ans);
 }
