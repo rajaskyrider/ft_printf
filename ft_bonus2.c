@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 09:50:29 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/08 15:46:31 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:06:42 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ void	ft_hashsign(va_list *ap, int *count, const char **format, char prev)
 
 	if ((*format)[1] == '-' || prev == '-')
 		prev = '-';
-	width = get_width(format);
+	if (*(*format + 1) != '0')
+		width = get_width(format);
+	else
+		(*format)++;
 	c = **format;
 	ans = b_format_sorter((char []){c, '#'}, ap, \
 							(int *[]){&width, count}, format);

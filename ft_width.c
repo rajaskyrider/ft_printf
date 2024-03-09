@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:21:31 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 12:01:45 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:19:59 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,6 @@ void	deal_c(char *ans, char c, int *count, int width)
 	}
 	else
 		ft_putstr_count(ans, count);
-}
-
-char	*deal_spcomb(char *ans, const char *dup, char c)
-{
-	int		width;
-	char	*new;
-	int		len;
-
-	if (check_negative(ans) == 1)
-		return (ans);
-	while (*dup != '%')
-		dup--;
-	while (*dup != c)
-		dup++;
-	width = get_prev_width(dup);
-	len = ft_strlen(ans);
-	if (len > width)
-		width = len;
-	new = (char *)ft_calloc((width + 1), sizeof(char));
-	new[0] = ' ';
-	ft_strlcpy(new + 1, ans, width + 1);
-	free(ans);
-	ans = new;
-	return (ans);
 }
 
 void	ft_printspaces(va_list *ap, int *count, const char **format)

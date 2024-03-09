@@ -6,7 +6,7 @@
 #    By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 10:57:24 by rpandipe          #+#    #+#              #
-#    Updated: 2024/03/08 10:36:07 by rpandipe         ###   ########.fr        #
+#    Updated: 2024/03/09 12:20:20 by rpandipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM		= rm -rf
 SRCS		= ft_printf.c ft_printstr.c ft_printnbr.c ft_printmem.c
 SRCSB		= ft_bonus1.c ft_bonussorter.c ft_savemem.c ft_savenbr.c \
 		  ft_savestr.c ft_width.c ft_nbraux.c ft_bonus2.c ft_precision.c \
-		  ft_plusaux.c
+		  ft_plusaux.c ft_dealcomb.c
 OBJS		= $(SRCS:.c=.o)
 OBJSB		= $(SRCSB:.c=.o)
 NAME		= libftprintf.a

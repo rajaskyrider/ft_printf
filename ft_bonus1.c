@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:38:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 11:57:27 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:19:38 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	ft_leftjust(va_list *ap, int *count, const char **format, char prev)
 		*count += 1;
 		width -= 1;
 	}
-	if ((c == 'd' || c == 'i') && prev == ' ')
-		ans = deal_spcomb(ans, *format, '-');
+	if (c == 'd' || c == 'i' || c == 'x' || c == 'X')
+		ans = deal_bonuscomb(prev, ans, *format, '-');;
 	len = ft_strlen(ans);
 	if (len < width)
 		ft_memset(ans + len, ' ', (size_t)(width - len));
@@ -108,8 +108,8 @@ void	ft_zeropad(va_list *ap, int *count, const char **format, char flag)
 							(int *[]){&width, count}, format);
 	if (c != **format)
 		return ;
-	if ((c == 'd' || c == 'i') && flag == ' ')
-		ans = deal_spcomb(ans, *format, '0');
+	if (c == 'd' || c == 'i' || c == 'x' || c == 'X')
+		ans = deal_bonuscomb(flag, ans, *format, '0');
 	len = ft_strlen(ans);
 	if (len < width)
 	{

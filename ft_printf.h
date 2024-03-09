@@ -6,7 +6,7 @@
 /*   By: rpandipe <rpandipe.student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:48:05 by rpandipe          #+#    #+#             */
-/*   Updated: 2024/03/09 11:03:41 by rpandipe         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:13:59 by rpandipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ char	*add_plus(char *ans, int len, int width);
 char	*add_space(char *ans, int len, int width);
 int		get_prev_width(const char *format);
 char	*deal_spcomb(char *ans, const char *dup, char c);
+char	*deal_hscomb(char *ans, const char *dup, char c);
+char	*deal_bonuscomb(char flag, char *ans, const char *dup, char prev);
 #endif
